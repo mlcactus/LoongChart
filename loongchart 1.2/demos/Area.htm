@@ -1,0 +1,55 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-Area</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.area.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var site0 = [], site1 = [], labels = [];
+            for (var i = 0; i < 96; i++) {
+                site0.push(30 + parseInt(Math.random() * 70));
+                site1.push(70 + parseInt(Math.random() * 30));
+                if (i % 4 == 0) { labels.push((i / 4).toString() + ":00"); }
+            }
+            var data = [
+                { text: 'Site0', value: site0, color: '#000000', click: function(data, e) { alert('Click site0! value is:' + data.vvalue); }, mouseover: function(data, e) { alert('Mouse over site0! value is:' + data.vvalue); } },
+                { text: 'Site1', value: site1, color: '#f68f70' }
+            ];
+
+            var options = {
+                valueType: 'n', animationSteps: 30,
+                title: { content: 'This chart shows traffic of two sites in a day.' },
+                node: { linecolor: "#f3cece", linewidth: 1 },
+                subTitle: { content: 'The data is apocryphal.' },
+                valueAxis: { linewidth: 1, verticalcomputeP: true, heap: true },
+                labelAxis: { labels: labels },
+                legend: { elementtype: "l" },
+                scale: { linewidth: 1, backcolors: ['rgba(12,67,255,0.2)', 'rgba(0,191,255,0.2)'] },
+                yAxisTitle: { content: 'Calculated by how many clicks by users.' },
+                tip: { merge: true },
+                footer: { content: 'MIIT Statistics.', fontcolor: '#f8d8d8' }
+            };
+
+            window.lchart = new LChart.Area('divCanvas', 'CN');
+            lchart.SetSkin('BlackAndWhite');
+            lchart.SetOptions(options);
+            lchart.Draw(data);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

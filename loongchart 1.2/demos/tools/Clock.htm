@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-Clock</title>
+
+    <script type="text/javascript" src="../../excanvas.js"></script>
+
+    <script type="text/javascript" src="../../tools/loongchart.tools.core.js"></script>
+
+    <script type="text/javascript" src="../../tools/loongchart.tools.clock.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var options = {
+                centerX: null,
+                centerY: null,
+                radius: null,
+                tickType: 'vibrate',
+                adjust: 0,
+                canvas: {
+                    backcolor: null,
+                    borderwidth: 1,
+                    bordercolor: null
+                },
+                background: {
+                    backcolor: null,
+                    borderwidth: 1,
+                    bordercolor: null,
+                    shadowcolor: '#000000',
+                    shadowblur: 0
+                },
+                calibration: {
+                    backcolor: null,
+                    margin: null,
+                    interval: 4,
+                    thinwidth: 2,
+                    thickwidth: 4,
+                    thinlength: null,
+                    thicklength: null,
+                    thinlinecolor: '#555555',
+                    thicklinecolor: '#000000'
+                },
+                labels: {
+                    labels: ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X', 'XI', 'XII'],
+                    labelcontrol: '001001001001',
+                    rotate: true,
+                    fontcolor: '#999999',
+                    fontsize: 18,
+                    fontweight: 'bolder'
+                },
+                pointer: {
+                    nodecolor: null,
+                    minuteheadwidth:6
+                },
+                currentValue: {
+                    fontcolor: '#2711c5',
+                    fontweight: 'bold',
+                    borderwidth: 1,
+                    bordercolor: '#CCCCCC'
+                }
+            };
+
+            window.lcharttool = new lcharttools.clock("divCanvas");
+            lcharttool.setOptions(options);
+            lcharttool.draw();
+        };
+        function settime(_static) {
+            if (_static) {
+                lcharttool.setTime(new Date("2014/01/01 12:12:12"));
+            }
+            else {
+                lcharttool.setTime();
+            }
+            lcharttool.draw();
+        }
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../../index.htm';">
+        返回
+    </button>
+    <button onclick="settime(false);">
+        读取系统时间</button>
+    <button onclick="settime(true);">
+        设置固定时间(2014/01/01 12:12:12)</button>
+</body>
+</html>

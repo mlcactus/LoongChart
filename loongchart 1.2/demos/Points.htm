@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-Points</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.points.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var data = [];
+            for (var i = 0; i < 21; i++) {
+                var dataitem = { text: 'City' + i.toString(), value: 20 + parseInt((Math.random() * 20).toFixed(0)) };
+                if (i == 3 || i == 16) { dataitem.nodelength = 10; dataitem.color = '#db1a1a'; }
+                data[i] = dataitem;
+            }
+
+            var options = {
+                valueType: 'n', animationSteps: 50,
+                alignline: { linecolor: "#e9a5a5" },
+                title: { content: 'Temperature changes in different cities at noon.' },
+                node: { linecolor: "#ffffff", linewidth: 1 },
+                subTitle: { content: 'The data is apocryphal.' },
+                valueAxis: { interval: 2 },
+                legend: { elementtype: "l" },
+                scale: { linewidth: 1, backcolors: ['rgba(0,191,255,0.2)', 'rgba(173,216,230,0.2)'] },
+                yAxisTitle: { content: 'Temperature(°C)' },
+                footer: { content: 'Meteorological Centre.', fontcolor: '#edfad6' },
+                tip: { content: function(data, e) { return '<div>' + data.text + '<br/>Temperature: ' + data.vvalue + '&nbsp;°C</div>'; } }
+            };
+
+            window.lchart = new LChart.Points('divCanvas', 'CN');
+            lchart.SetSkin('BlackAndWhite');
+            lchart.SetOptions(options);
+            lchart.Draw(data);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

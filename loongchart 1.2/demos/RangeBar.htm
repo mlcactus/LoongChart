@@ -1,0 +1,51 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-RangeBar</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.rangebar.js"></script>
+
+    <script type="text/javascript" src="../loongchart.skins.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var data = [
+                ['China', [['2013-11-20', '2013-9-22'], ['2013-8-12', '2013-10-11']]],
+                ['Japan', [['2013-9-15', '2013-10-21'], ['2013-8-25', '2013-10-30']]],
+                ['America', [['2013-8-20', '2013-9-22'], ['2013-9-5', '2013-11-5']]],
+                ['France', [['2013-8-17', '2013-9-27'], ['2013-9-28', '2013-10-10']]],
+                ['Brazil', [['2013-10-1', '2013-11-2'], ['2013-10-8', '2013-11-15']]]
+            ];
+            var options = {
+                valueType: 'd', animationSteps: 60,
+                title: { content: 'Fishing period that five states allows.' },
+                subTitle: { content: 'The data is apocryphal.' },
+                labelAxis: { labels: ['2012年', '2013年'], fontsize: 15 },
+                valueAxis: { content: function(val) { return val.format('MM-dd'); }, fontsize: 15 },
+                scale: { linewidth: 1, backcolors: ['rgba(175,199,238,0.2)', 'rgba(245,222,179,0.2)'], linecolor: '#777777' },
+                smallLabel: { fontsize: 12, content: function(val) { return val.format('MM-dd'); } },
+                bigLabel: { fontsize: 13, color: '#ed6868', content: function(val) { return val.format('MM-dd'); } },
+                shadow: { show: true, color: 'rgba(10,10,10,1)', blur: 3 },
+                cross: { linewidth: 3, length: 5 }
+            };
+            window.lchart = new LChart.RangeBar('divCanvas', 'CN');
+            lchart.SetSkin('LinearGradient_SkyBlue');
+            lchart.SetOptions(options);
+            lchart.Draw(data);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-Ring3D</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.ring3d.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var data = [
+                { text: 'Shanghai', value: 23.47, click: function(data, evt) { alert('You click Shanghai!'); } },
+                { text: 'Beijing', value: 20.69 },
+                { text: 'New York', value: 19.88 },
+                { text: 'Tokyo', value: 13.01 },
+                { text: 'London', value: 7.51 },
+                { text: 'Berlin', value: 3.40 },
+                { text: 'Paris', value: 2.20, mouseover: function(data, evt) { alert('This is Paris!'); } }
+            ];
+            var options = {
+                animationSteps: 70, averageAngle: true,
+                radar: { fillcolors: ["rgba(220,111,220,0.4)"] },
+                title: { content: "How Much Population In These Big Cities." },
+                tip: { content: function(data) { return '<div>' + data.text + '<br/>value：' + data.value.toString() + ' million<br/>percent：' + data.percent.toFixed(3) + '%</div>'; } }
+            };
+
+            window.lchart = new LChart.Ring3D('divCanvas', 'CN');
+            lchart.SetSkin('BlackAndWhite');
+            lchart.SetOptions(options);
+            lchart.Draw(data);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

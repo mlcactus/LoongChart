@@ -1,0 +1,232 @@
+﻿公共值设定：
+text：该数据所代表的对象；
+value：核心数据；
+subitems：子节点数据（暂时只有嵌套饼图才用上）
+color：绘制该数据图形所使用的颜色；
+click：当点击该数据绘制出的图形时，需要执行的方法；
+mouseover：当鼠标移动到该数据绘制出的图形上方时，需要执行的方法；
+mouseleave：当鼠标移动离开该数据绘制出的图形时，需要执行的方法；
+
+
+关于“纯数组数据源”的使用，可以使用类似于以下数据的纯数组数据源：
+    var data_ITCompany = [
+        ['开发部', 140, [['软件工程师', 50], ['测试工程师', 35], ['产品专员', 30], ['研发经理', 15], ['美工', 10]],'#000000'],
+        ['销售部', 110, [['一级销售员', 50], ['二级销售员', 30], ['三级销售员', 20], ['销售经理', 10]]],
+        ['IT部', 45, [['网络工程师', 20], ['运维', 15], ['其他', 10]]],
+        ['人事部', 30],
+        ['系统部', 21, [['系统工程师', 10], ['DBA', 8], ['其他', 3]]],
+    ];
+    数组元素依次为：
+    text(必须，string)、
+    value(必须，number或number array)、
+    subitems(非必须，data array)、
+    color(非必须，color string)、
+    click(非必须，function)、
+    mouseover(非必须，function)、
+    mouseleave(非必须，function)，
+    系统内部会将数组数据源转化为常规数据源，因此在传入数组数据源时需要严格按照上述的顺序组织好。
+    这里要注意的是，如果排在前面的格式相同的非必须项为空，而同时希望给后面的非必须项赋值，则需要将前面置为null。例如，需要设置mouseover而不要设置click，则需要通过“['人事部', 30,'#ffffff',null,function(){alert('mouseover event!');}]”的方式将排在前面的click设为null。
+
+
+
+
+特定值设定：
+1，Pie：
+   extended：初次绘制时是否向外延伸以实现“突出”显示。
+   fontcolor：半圆内部文本的颜色；
+   fontsize：半圆内部文本的字体大小；
+   fontweight：半圆内部文本的字体粗细；
+   
+   Pie3D：
+   extended：初次绘制时是否向外延伸以实现“突出”显示。
+   fontcolor：半圆内部文本的颜色；
+   fontsize：半圆内部文本的字体大小；
+   fontweight：半圆内部文本的字体粗细；  
+   darksidecolor：半圆阴影部分的颜色； 
+   
+   
+2，Ring：
+   extended：初次绘制时是否向外延伸以实现“突出”显示。
+   fontcolor：半圆内部文本的颜色；
+   fontsize：半圆内部文本的字体大小；
+   fontweight：半圆内部文本的字体粗细；
+   
+   Ring3D：
+   extended：初次绘制时是否向外延伸以实现“突出”显示。
+   fontcolor：半圆内部文本的颜色；
+   fontsize：半圆内部文本的字体大小；
+   fontweight：半圆内部文本的字体粗细；       
+   darksidecolor：半圆阴影部分的颜色；  
+   
+   
+3，MultiRing：
+   fontcolor：半圆内部文本的颜色；
+   fontsize：半圆内部文本的字体大小；
+   fontweight：半圆内部文本的字体粗细； 
+   
+   MultiRing3D：
+   fontcolor：半圆内部文本的颜色；
+   fontsize：半圆内部文本的字体大小；
+   fontweight：半圆内部文本的字体粗细；     
+   darksidecolor：半圆阴影部分的颜色； 
+
+
+4，Polar3D：
+   darksidecolor：半圆阴影部分的颜色； 
+
+
+5，Bar：
+   fontcolor：条状图右侧数字文本的颜色；
+   fontsize：条状图右侧数字文本的字体大小；
+   fontweight：条状图右侧数字文本的字体粗细；
+
+
+6，HeapBar：
+   fontcolor：条状图右侧数字文本的颜色；
+   fontsize：条状图右侧数字文本的字体大小；
+   fontweight：条状图右侧数字文本的字体粗细；
+  
+  
+7，Histogram：
+   fontcolor：条状图右侧数字文本的颜色；
+   fontsize：条状图右侧数字文本的字体大小；
+   fontweight：条状图右侧数字文本的字体粗细；
+   
+   Histogram3D：
+   fontcolor：条状图右侧数字文本的颜色；
+   fontsize：条状图右侧数字文本的字体大小；
+   fontweight：条状图右侧数字文本的字体粗细； 
+   topcolor：上侧阴影的颜色；
+   rightcolor：右侧阴影的颜色；
+   
+   
+8，HeapHistogram：
+   fontcolor：条状图右侧数字文本的颜色；
+   fontsize：条状图右侧数字文本的字体大小；
+   fontweight：条状图右侧数字文本的字体粗细；  
+    
+   HeapHistogram3D：
+   fontcolor：条状图右侧数字文本的颜色；
+   fontsize：条状图右侧数字文本的字体大小；
+   fontweight：条状图右侧数字文本的字体粗细；
+   topcolor：上侧阴影的颜色；
+   rightcolor：右侧阴影的颜色；        
+  
+  
+9，Line：
+   linewidth：线条宽度；
+   nodetype：节点类型（圆形、方形、叉形、三角形？）；
+   nodelinecolor：节点外围线的颜色
+   nodelinewidth：节点外围线的宽度
+   nodefillcolor：节点内部填充颜色
+   nodelength：节点长度(边长，直径)
+
+
+10，Points：
+   nodetype：节点类型（圆形、方形、叉形、三角形？）；
+   nodelinecolor：节点外围线的颜色
+   nodelinewidth：节点外围线的宽度
+   nodelength：节点长度(边长，直径)
+   注意：nodefillcolor的设置使用color。
+
+
+11，Area：
+   linewidth：线条宽度(仅对多维数据有效)；
+   nodetype：节点类型（圆形、方形、叉形、三角形？）；
+   nodelinecolor：节点外围线的颜色
+   nodelinewidth：节点外围线的宽度
+   nodefillcolor：节点内部填充颜色
+   nodelength：节点长度(边长，直径)
+
+
+12，Radar：
+   linewidth：线条宽度(仅对多维数据有效)；
+   linecolor:线条颜色(仅对多维数据有效)；
+   nodetype：节点类型（圆形、方形、叉形、三角形？）；
+   nodelinecolor：节点外围线的颜色
+   nodefillcolor：节点内部填充颜色
+   nodelinewidth：节点外围线的宽度
+   nodelength：节点长度(边长，直径)
+   
+   
+13，RangeBar：
+   smallfontcolor：条状图左侧数字文本的颜色；
+   smallfontsize：条状图左侧数字文本的字体大小；
+   smallfontweight：条状图左侧数字文本的字体粗细；
+   bigfontcolor：条状图右侧数字文本的颜色；
+   bigfontsize：条状图右侧数字文本的字体大小；
+   bigfontweight：条状图右侧数字文本的字体粗细；   
+
+
+14，RangeHistogram：
+   smallfontcolor：条状图左侧数字文本的颜色；
+   smallfontsize：条状图左侧数字文本的字体大小；
+   smallfontweight：条状图左侧数字文本的字体粗细；
+   bigfontcolor：条状图右侧数字文本的颜色；
+   bigfontsize：条状图右侧数字文本的字体大小；
+   bigfontweight：条状图右侧数字文本的字体粗细；   
+   
+   RangeHistogram3D：
+   smallfontcolor：条状图左侧数字文本的颜色；
+   smallfontsize：条状图左侧数字文本的字体大小；
+   smallfontweight：条状图左侧数字文本的字体粗细；
+   bigfontcolor：条状图右侧数字文本的颜色；
+   bigfontsize：条状图右侧数字文本的字体大小；
+   bigfontweight：条状图右侧数字文本的字体粗细；
+   topcolor：上侧阴影的颜色；
+   rightcolor：右侧阴影的颜色；       
+   
+   
+15，NestedPie:
+   subitems：子节点的数据（数组格式，属性与母节点类似，也包括text、value、color等等）；
+   subcolor：子节点的颜色；
+   fontcolor：半圆内部文本的颜色；
+   fontsize：半圆内部文本的字体大小；
+   fontweight：半圆内部文本的字体粗细； 
+   subitems子节点可添加的初始设定(除text、value、color、click、mouseover、mouseleave外)：
+	   fontcolor：半圆内部文本的颜色；
+	   fontsize：半圆内部文本的字体大小；
+	   fontweight：半圆内部文本的字体粗细；  
+	   
+   NestedPie3D:
+   subitems：子节点的数据（数组格式，属性与母节点类似，也包括text、value、color等等）；
+   subcolor：子节点的颜色；
+   fontcolor：半圆内部文本的颜色；
+   fontsize：半圆内部文本的字体大小；
+   fontweight：半圆内部文本的字体粗细； 
+   darksidecolor：半圆阴影部分的颜色； 
+   subitems子节点可添加的初始设定(除text、value、color、click、mouseover、mouseleave外)：
+	   fontcolor：半圆内部文本的颜色；
+	   fontsize：半圆内部文本的字体大小；
+	   fontweight：半圆内部文本的字体粗细；	 
+	   darksidecolor：半圆阴影部分的颜色；   
+	   
+	   
+16，RangeArea：
+   linewidth：线条宽度(仅对多维数据有效)；
+   fillcolor：填充颜色（一般为ragb格式，且b小于1以达到透明效果，仅对多维数据有效）
+   nodetype：节点类型（圆形、方形、叉形、三角形？）；
+   nodelinecolor：节点外围线的颜色
+   nodelinewidth：节点外围线的宽度
+   nodefillcolor：节点内部填充颜色
+   nodelength：节点长度(边长，直径)	   
+   
+   
+17，QueueBar：
+   fontcolor：条状图左(右)侧数字文本的颜色；
+   fontsize：条状图左(右)侧数字文本的字体大小；
+   fontweight：条状图左(右)侧数字文本的字体粗细；
+
+
+18，QueueHistogram：
+   fontcolor：柱状图上(下)方数字文本的颜色；
+   fontsize：柱状图上(下)方数字文本的字体大小；
+   fontweight：柱状图上(下)方数字文本的字体粗细；   
+    
+   QueueHistogram3D：
+   fontcolor：柱状图上(下)方数字文本的颜色；
+   fontsize：柱状图上(下)方数字文本的字体大小；
+   fontweight：柱状图上(下)方数字文本的字体粗细；          
+   topcolor：上侧阴影的颜色；
+   rightcolor：右侧阴影的颜色；       
+      

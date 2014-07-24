@@ -1,0 +1,235 @@
+﻿
+Public properties: 
+
+text: The object represented by the data; 
+value: Core data of the part-graphic; 
+subitems: Data of child nodes(temporarily only used in nestedpie);
+color: The color to draw the part-graphic;
+click: Function to call when click the part-graphic;
+mouseover: Function to call when mouse over the part-graphic;
+mouseleave: Function to call when mouse leave the part-graphic;
+
+
+About how to use "pure array" data instead of noraml objetct data, For example, you can arrange your data like that: 
+    var data_ITCompany = [
+        ['Development', 140, [['Software Engineer', 50], ['Test Engineer', 35], ['Product Specialist', 30], ['R & D Manager', 15], ['UI', 10]],'#000000'],
+        ['Sales', 110, [['Level-one Salesmen', 50], ['Level-two Salesmen', 30], ['Level-three Salesmen', 20], ['Sales Manager', 10]]],
+        ['IT dept', 45, [['Network Engineer', 20], ['Operator', 15], ['Others', 10]]],
+        ['Ministry of personnel', 30],
+        ['Systems Division', 21, [['System Engineer', 10], ['DBA', 8], ['Others', 3]]],
+    ];
+    The order of the array elements: 
+    text(necessary, string), 
+    value(necessary, number or number array), 
+    subitems(unnecessary, data array), 
+    color(unnecessary, color string), 
+    click(unnecessary, function), 
+    mouseover(unnecessary, function), 
+    mouseleave(unnecessary, function), 
+    
+    Please make sure to arrange pure-array data source in order like above, so that LChart will transfer pure-array data to object data.
+    Here you must note that: if property at back need a assignment while there's property of same type at front doesn't not need assignment, then the front property must be set null. For example, if need to set function to mouseover while don't need to she click, then you can arrange data like: ['Development', 140,'#ffffff',null,function(){alert('mouseover event!');}].
+
+
+
+
+Specific properties: 
+1, Pie: 
+   extended: If semicircle extends a distance outward;
+   fontcolor: Fontcolor of inner label inside semicircle;
+   fontsize: Fontsize of inner label inside semicircle; 
+   fontweight: Fontweight of inner label inside semicircle; 
+   
+   Pie3D: 
+   extended: If semicircle extends a distance outward;
+   fontcolor: Fontcolor of inner label inside semicircle;
+   fontsize: Fontsize of inner label inside semicircle; 
+   fontweight: Fontweight of inner label inside semicircle; 
+   darksidecolor: Color of dark side;
+   
+   
+2, Ring: 
+   extended: If semicircle extends a distance outward.
+   fontcolor: Fontcolor of inner label inside semicircle; 
+   fontsize: Fontsize of inner label inside semicircle; 
+   fontweight: Fontweight of inner label inside semicircle;  
+     
+   Ring3D: 
+   extended: If semicircle extends a distance outward.
+   fontcolor: Fontcolor of inner label inside semicircle; 
+   fontsize: Fontsize of inner label inside semicircle; 
+   fontweight: Fontweight of inner label inside semicircle; 
+   darksidecolor: Color of dark side;     
+   
+   
+3, MultiRing: 
+   fontcolor: Fontcolor of inner label inside semicircle; 
+   fontsize: Fontsize of inner label inside semicircle; 
+   fontweight: Fontweight of inner label inside semicircle;   
+   
+   MultiRing3D: 
+   fontcolor: Fontcolor of inner label inside semicircle; 
+   fontsize: Fontsize of inner label inside semicircle; 
+   fontweight: Fontweight of inner label inside semicircle; 
+   darksidecolor: Color of dark side;   
+
+
+4, Polar3D: 
+   darksidecolor: Color of dark side;   
+
+
+5, Bar: 
+   fontcolor: Fontcolor of right label of bar;
+   fontsize: Fontsize of right label of bar; 
+   fontweight: Fontweight of right label of bar; 
+
+
+6, HeapBar: 
+   fontcolor: Fontcolor of inner label inside bar; 
+   fontsize: Fontsize of inner label inside bar; 
+   fontweight: Fontweight of inner label inside bar; 
+  
+  
+7, Histogram: 
+   fontcolor: Fontcolor of top label of histogram; 
+   fontsize: Fontsize of top label of histogram; 
+   fontweight: Fontweight of top label of histogram; 
+   
+   Histogram3D: 
+   fontcolor: Fontcolor of top label of histogram; 
+   fontsize: Fontsize of top label of histogram; 
+   fontweight: Fontweight of top label of histogram; 
+   topcolor: Color of top dark side;
+   rightcolor: Color of right dark side;
+   
+   
+8, HeapHistogram: 
+   fontcolor: Fontcolor of inner label inside histogram; 
+   fontsize: Fontsize of inner label inside histogram; 
+   fontweight: Fontweight of inner label inside histogram;    
+
+   HeapHistogram3D: 
+   fontcolor: Fontcolor of inner label inside histogram; 
+   fontsize: Fontsize of inner label inside histogram; 
+   fontweight: Fontweight of inner label inside histogram;  
+   topcolor: Color of top dark side;
+   rightcolor: Color of right dark side;  
+  
+  
+9, Line: 
+   linewidth: Width of line; 
+   nodetype: Graphic type of node, s(quare, default), >c(ycle), t(riangle), x(cross);
+   nodelinecolor: Line color of node's outer line(inherit color of line where node lies in by default);
+   nodelinewidth: Line width of node's outer line(inherit width of line where node lies in by default);
+   nodefillcolor: Fill color of node(inherit color of line where node lies in by default);
+   nodelength: Length of node;
+
+
+10, Points: 
+   nodetype: Graphic type of node;
+   nodelinecolor: Line color of node's outer line;
+   nodelinewidth: Line width of node's outer line;
+   nodelength: Length of node;
+   !!!Notice: use color property for nodefillcolor.
+   
+   
+11, Area: 
+   linewidth: Width of line; 
+   nodetype: Graphic type of node, s(quare, default), >c(ycle), t(riangle), x(cross);
+   nodelinecolor: Line color of node's outer line(inherit color of line where node lies in by default);
+   nodelinewidth: Line width of node's outer line(inherit width of line where node lies in by default);
+   nodefillcolor: Fill color of node(inherit color of line where node lies in by default);
+   nodelength: Length of node;
+
+
+12, Radar: 
+   linewidth: Width of line;
+   linecolor: Color of line(take effects while multiple dimensional data);
+   nodetype: Graphic type of node, s(quare, default), >c(ycle), t(riangle), x(cross);
+   nodelinecolor: Line color of node's outer line
+   nodefillcolor: Fill color of node;
+   nodelinewidth: Line width of node's outer line;
+   nodelength: Length of node;
+   
+   
+13, RangeBar: 
+   smallfontcolor: Fontcolor of left label of bar;
+   smallfontsize: Fontsize of left label of bar;
+   smallfontweight: Fontweight of left label of bar;
+   bigfontcolor: Fontcolor of right label of bar;
+   bigfontsize: Fontsize of right label of bar;
+   bigfontweight: Fontweight of right label of bar;
+
+
+14, RangeHistogram: 
+   smallfontcolor: Fontcolor of bottom label of histogram;
+   smallfontsize: Fontsize of left bottom of histogram;
+   smallfontweight: Fontweight of bottom label of histogram;
+   bigfontcolor: Fontcolor of top label of histogram;
+   bigfontsize: Fontsize of top label of bar;
+   bigfontweight: Fontweight of top label of histogram;   
+
+   RangeHistogram3D: 
+   smallfontcolor: Fontcolor of bottom label of histogram;
+   smallfontsize: Fontsize of left bottom of histogram;
+   smallfontweight: Fontweight of bottom label of histogram;
+   bigfontcolor: Fontcolor of top label of histogram;
+   bigfontsize: Fontsize of top label of bar;
+   bigfontweight: Fontweight of top label of histogram;   
+   topcolor: Color of top dark side;
+   rightcolor: Color of right dark side;  
+   
+   
+15, NestedPie:
+   subitems: Data of child nodes.
+   subcolor: Color of child semicircles; 
+   fontcolor: Fontcolor of inner label inside semicircle; 
+   fontsize: Fontsize of inner label inside semicircle; 
+   fontweight: Fontweight of inner label inside semicircle;  
+   Specific properties for subitems(in addition to text,value,color,click,mouseover,mouseleave): 
+	   fontcolor: Fontcolor of inner label inside child semicircle; 
+	   fontsize: Fontsize of inner label inside child semicircle; 
+	   fontweight: Fontweight of inner label inside child semicircle;   
+
+   NestedPie3D:
+   subitems: Data of child nodes.
+   subcolor: Color of child semicircles; 
+   fontcolor: Fontcolor of inner label inside semicircle; 
+   fontsize: Fontsize of inner label inside semicircle; 
+   fontweight: Fontweight of inner label inside semicircle;  
+   Specific properties for subitems(in addition to text,value,color,click,mouseover,mouseleave): 
+	   fontcolor: Fontcolor of inner label inside child semicircle; 
+	   fontsize: Fontsize of inner label inside child semicircle; 
+	   fontweight: Fontweight of inner label inside child semicircle;   	   
+   darksidecolor: Color of dark side; 
+	   
+	   
+16, RangeArea: 
+   linewidth: Width of line(take effects while multiple dimensional data);
+   fillcolor: Fillcolor of area(Generally use rgba format, and a is less than 1 in order to achieve transparency effects; take effects while multiple dimensional data)
+   nodetype: Graphic type of node;
+   nodelinecolor: Line color of node's outer line
+   nodelinewidth: Line width of node's outer line;
+   nodefillcolor: Fill color of node;
+   nodelength: Length of node;
+   
+   
+17, QueueBar: 
+   fontcolor: Fontcolor of left or right label of bar;
+   fontsize: Fontsize of left or right label of bar;
+   fontweight: Fontweight of left or right label of bar;
+
+
+18, QueueHistogram: 
+   fontcolor: Fontcolor of top or bottom label of histogram;
+   fontsize: Fontsize of top or bottom label of histogram;
+   fontweight: Fontweight of top or bottom label of histogram;
+ 
+   QueueHistogram3D: 
+   fontcolor: Fontcolor of top or bottom label of histogram;
+   fontsize: Fontsize of top or bottom label of histogram;
+   fontweight: Fontweight of top or bottom label of histogram;  
+   topcolor: Color of top dark side;
+   rightcolor: Color of right dark side;     
+   
+      

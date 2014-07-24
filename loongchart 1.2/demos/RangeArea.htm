@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-RangeArea</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.rangearea.js"></script>
+
+    <script type="text/javascript" src="../loongchart.skins.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var data = [
+                ['China', [[1, 10], [2, 8], [5, 11], [7, 18], [3, 20], [11, 15], [7, 9], [2, 8], [1, 10], [5, 9]]],
+                ['Japan', [[5, 7], [3, 6], [2, 10], [8, 11], [8, 17], [6, 17], [2, 10], [3, 8], [5, 11], [3, 9]]]
+            ];
+            var data1 = [
+                ['China', [[1, [1, 10]], [3, [2, 8]], [4, [5, 11]], [7, [7, 18]], [8, [3, 20]], [10, [11, 15]], [12, [7, 9]], [13, [2, 8]], [14, [1, 10]], [16, [5, 9]]]],
+                ['Japan', [[2, [5, 7]], [3, [3, 6]], [5, [2, 10]], [6, [8, 11]], [8, [8, 17]], [11, [6, 17]], [12, [2, 10]], [13, [3, 8]], [14, [5, 11]], [15, [3, 9]]]]
+            ];
+            var data2 = [
+                ['1月', [1, 10]], ['2月', [2, 8]], ['3月', [5, 11]], ['4月', [7, 18]], ['5月', [3, 20]], ['6月', [11, 15]], ['7月', [7, 9]], ['8月', [2, 8]], ['9月', [1, 10]], ['10月', [5, 9]]
+            ];
+            var options = {
+                animationSteps: 60,
+                title: { content: '测试范围面积图' },
+                subTitle: { content: 'The data is apocryphal.' },
+                node: { show: true },
+                labelAxis: { labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月'], fontsize: 15 },
+                tip: { showSingle: true }
+            };
+            var options1 = {
+                animationSteps: 60,
+                title: { content: '测试范围面积图' },
+                subTitle: { content: 'The data is apocryphal.' },
+                node: { show: true },
+                labelAxis: { valueType: 'n', labels: ['1月', '2月', '3月', '4月', '5月', '6月', '7月', '8月', '9月', '10月'], fontsize: 15 },
+                tip: { showSingle: true }
+            };
+            window.lchart = new LChart.RangeArea('divCanvas', 'CN');
+            lchart.SetSkin('LinearGradient_SkyBlue');
+            lchart.SetOptions(options);
+            lchart.Draw(data2);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-组合图-齿轮</title>
+
+    <script type="text/javascript" src="../../excanvas.js"></script>
+
+    <script type="text/javascript" src="../../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../../loongchart.pie.js"></script>
+    <script type="text/javascript" src="../../loongchart.ring.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var data_languages = [{ text: 'C', value: 17.855 }, { text: 'Java', value: 17.417 }, { text: 'Objective-C', value: 10.283 }, { text: 'C++', value: 9.140 }, { text: 'C#', value: 6.196 }, { text: 'PHP', value: 5.546 }, { text: 'Visual Basic', value: 4.749 }, { text: 'Python', value: 4.173 }, { text: 'Perl', value: 2.264 }, { text: 'Javascript', value: 1.976 }, { text: 'Others', value: 20.401 }];
+            var options_languages = {
+                offX: 0, radius: 120, animationSteps: 50,
+                title: { content: '利用饼类图绘制类似于齿轮的图形组合' },
+                subTitle: { content: '因为共用主图饼图的数据，因此可通过图例实现数据同步' },
+                outerLabel: { show: false },
+                legend: { enablecontrol: true }
+            };
+
+            //初始化主图对象，本例以饼状图作为主图
+            window.lchart = new LChart.Pie('divCanvas', 'CN');
+            //设置主图的选项和数据
+            lchart.SetSkin('BlackAndWhite');
+            lchart.SetOptions(options_languages);
+            lchart.SetData(data_languages);
+
+            //添加2个Ring组合图
+            lchart.AddPlugin('Ring', null, { offX: -169, offY: 60, innerRadius: 30, outerRadius: 60, outerLabel: { show: false } });
+            lchart.AddPlugin('Ring', null, { offX: 180, offY: -60, innerRadius: 40, outerRadius: 70, outerLabel: { show: false } });
+
+            lchart.Draw();
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-Histogram</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.histogram.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var data = [
+                { text: '一月', value: 7 },
+                { text: '二月', value: 5 },
+                { text: '三月', value: 12 },
+                { text: '四月', value: 12 },
+                { text: '五月', value: 15 },
+                { text: '六月', value: 13 },
+                { text: '七月', value: 15 },
+                { text: '八月', value: 18 },
+                { text: '九月', value: 12 },
+                { text: '十月', value: 4 }
+            ];
+            var options = {
+                valueType: 'n', animationSteps: 60,
+                bar: { useSameColor: true },
+                histogram: { useSameColor: true },
+                title: { content: 'XX信息系统有限公司在2013年1至10月份的销售额' },
+                valueAxis: { linewidth: 1 },
+                subTitle: { content: '结论为：八月份销售额最高' },
+                scale: { linewidth: 1, backcolors: ['rgba(175,199,238,0.2)', 'rgba(245,222,179,0.2)'] },
+                cross: { linewidth: 3, linecolor: '#ffffff' },
+                caption: { content: '(十万元)' },
+                footer: { content: '销售部统计结果', fontcolor: '#f8d8d8', fontsize: 14 },
+                shadow: { show: true, color: 'rgba(10,10,10,1)', blur: 3, offsetX: -3, offsetY: 3 }
+            };
+
+            window.lchart = new LChart.Histogram('divCanvas', 'CN');
+            lchart.SetSkin('BlackAndWhite');
+            lchart.SetOptions(options);
+            lchart.Draw(data);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

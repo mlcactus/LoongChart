@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-Radar</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.radar.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var data = [
+                {
+                    color: "rgba(220,220,220,0.5)",
+                    linecolor: "rgba(220,220,220,1)",
+                    linewidth: 2,
+                    nodefillcolor: "rgba(220,220,220,1)",
+                    nodelinecolor: "#ffffff",
+                    value: [65, 40, 70, 75, 40, 90, 65],
+                    text: 'Chopper',
+                    click: function(data, evt) { alert('Click! Chopper：' + data.value); }
+                },
+                {
+                    color: "rgba(151,187,205,0.5)",
+                    linecolor: "rgba(151,187,205,1)",
+                    linewidth: 2,
+                    nodefillcolor: "rgba(151,187,205,1)",
+                    nodelinecolor: "#ffffff",
+                    value: [98, 75, 85, 45, 25, 65, 90],
+                    text: 'Nami',
+                    mouseover: function(data, evt) { alert('Mouseover! Nami：' + data.value); }
+                }
+            ];
+
+            var options = {
+                animationSteps: 70,
+                labels: { labels: ['IQ', 'EQ', 'Smart', 'Strength', 'Brave', 'Stick', 'Careful'], fontcolors: ["rgba(30,144,255,1)", "rgba(39,64,139,1)", "rgba(93,71,139,1)", "rgba(188,143,143,1)", "rgba(178,34,34,1)", "rgba(255,140,0,1)", "rgba(139,134,130,1)"] },
+                title: { content: "How Many Points Chopper and Nami Can Get In Each Aspect." }
+            };
+
+            window.lchart = new LChart.Radar('divCanvas', 'CN');
+            lchart.SetSkin('BlackAndWhite');
+            lchart.SetOptions(options);
+            lchart.Draw(data);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

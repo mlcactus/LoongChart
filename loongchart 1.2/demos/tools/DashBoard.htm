@@ -1,0 +1,95 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-DashBoard</title>
+
+    <script type="text/javascript" src="../../excanvas.js"></script>
+
+    <script type="text/javascript" src="../../tools/loongchart.tools.core.js"></script>
+
+    <script type="text/javascript" src="../../tools/loongchart.tools.dashboard.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var options = {
+                canvas: {
+                    bordercolor: "#353882",
+                    borderwidth: 2,
+                    backcolor: "#ffffff"
+                },
+                background: {
+                    shadowcolor: "#100e0e",
+                    shadowblur: 15
+                },
+                calibration: {
+                    margin: 10,
+                    minvalue: 0,
+                    maxvalue: 200,
+                    scalecount: 10,
+                    startangle: -0.7,
+                    endangle: 0.7,
+                    length: 40,
+                    linecolor: "#999999",
+                    thinwidth: 1,
+                    thickwidth: 2,
+                    thickerwidth: 4,
+                    grades: [{
+                        color: "rgba(16,173,28,0.5)",
+                        minvalue: 0,
+                        maxvalue: 60
+                    }, {
+                        color: "rgba(255,153,51,0.5)",
+                        minvalue: 60,
+                        maxvalue: 100
+                    }, {
+                        color: "rgba(239,11,11,0.5)",
+                        minvalue: 100,
+                        maxvalue: 140
+                    }, {
+                        color: "rgba(239,11,200,0.5)",
+                        minvalue: 140,
+                        maxvalue: null}]
+                    },
+                    pointer: {
+                        nodecolor: "#e83030",
+                        pincolor: "#e82c2c"
+                    },
+                    unit: {
+                        content: "km/h",
+                        fontcolor: "#472682",
+                        backcolor: "#ffffff",
+                        borderwidth: 1,
+                        bordercolor: "#524171"
+                    },
+                    currentValue: {
+                        fontweight: "bold"
+                    },
+                    warning: {
+                        thresholdmax: 100,
+                        contentmax: "Notice: the current speed exceeds 100km / h!!!",
+                        fontcolor: "#df2637"
+                    }
+                };
+
+                var lcharttool = new lcharttools.dashboard("divCanvas");
+                lcharttool.setOptions(options);
+                lcharttool.draw(Math.random() * 90 + 40);
+                window._runningHandler = setInterval(function() {
+                    var val = data = Math.random() * 90 + 40;
+                    lcharttool.draw(val);
+                }, 3000);
+
+
+            };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../../index.htm';">
+        返回
+    </button>
+</body>
+</html>

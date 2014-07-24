@@ -1,0 +1,87 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-组合图-六道金刚</title>
+
+    <script type="text/javascript" src="../../excanvas.js"></script>
+
+    <script type="text/javascript" src="../../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../../loongchart.pie.js"></script>
+    <script type="text/javascript" src="../../loongchart.ring.js"></script>
+    <script type="text/javascript" src="../../loongchart.multiring.js"></script>
+    <script type="text/javascript" src="../../loongchart.polar.js"></script>
+    <script type="text/javascript" src="../../loongchart.radar.js"></script>
+    <script type="text/javascript" src="../../loongchart.nestedpie.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function () {
+            var data_explorer = [{ text: 'Firefox', value: 45.0, click: function (data, evt) { alert('This is Firefox, value is ' + data.value); } }, { text: 'IE', value: 26.8, extended: true }, { text: 'Chrome', value: 12.8, click: function (data, e) { alert('Hi! This is Chrome explorer data!'); } }, { text: 'Safari', value: 8.5 }, { text: 'Opera', value: 6.2 }, { text: 'Others', value: 0.7 }];
+            var options_explorer = {
+                offX: 230, offY: 70,
+                legend: { show: false },
+                title: { content: '下图是六大金刚同台表演' }
+            };
+
+            var data_onepiece = [
+                { color: "rgba(220,220,220,0.5)", linecolor: "rgba(220,220,220,1)", linewidth: 2, nodefillcolor: "rgba(220,220,220,1)", nodelinecolor: "#ffffff", value: [65, 40, 70, 75, 40, 90, 65], text: 'Chopper', click: function (data, evt) { alert('Click! Chopper：' + data.value); } },
+                { color: "rgba(151,187,205,0.5)", linecolor: "rgba(151,187,205,1)", linewidth: 2, nodefillcolor: "rgba(151,187,205,1)", nodelinecolor: "#ffffff", value: [98, 75, 85, 45, 25, 65, 90], text: 'Nami', mouseover: function (data, evt) { alert('Mouseover! Nami：' + data.value); } }];
+            var options_onepiece = { offX: 0, offY: 70, labels: { labels: ['IQ', 'EQ', 'Smart', 'Strength', 'Brave', 'Stick', 'Careful'], fontcolors: ["#ffffff", "#ffabff", "rgba(193,71,139,1)", "rgba(188,143,143,1)", "rgba(178,34,34,1)", "rgba(255,140,0,1)", "rgba(139,134,130,1)"] } };
+
+            var data_browershare = [
+                {
+                    value: 55.11, text: 'MSIE',
+                    subitems: [{ text: 'MSIE 6.0', value: 10.85 }, { text: 'MSIE 7.0', value: 7.35 }, { text: 'MSIE 8.0', value: 33.06 }, { text: 'MSIE 9.0', value: 3.85 }]
+                },
+                {
+                    value: 21.63, text: 'Firefox',
+                    subitems: [{ text: 'Firefox 2.0', value: 0.20 }, { text: 'Firefox 3.0', value: 0.83 }, { text: 'Firefox 3.5', value: 2.05 }, { text: 'Firefox 3.6', value: 13.12 }, { text: 'Firefox 4.0', value: 5.43 }]
+                },
+                {
+                    value: 11.94, text: 'Chrome',
+                    subitems: [{ text: 'Chrome 5.0', value: 0.12 }, { text: 'Chrome 6.0', value: 0.19 }, { text: 'Chrome 7.0', value: 0.12 }, { text: 'Chrome 8.0', value: 0.36 }, { text: 'Chrome 9.0', value: 0.32 }, { text: 'Chrome 10.0', value: 10.11 }, { text: 'Chrome 11.0', value: 0.50 }, { text: 'Chrome 12.0', value: 0.22 }]
+                },
+                {
+                    value: 7.15, text: 'Safari',
+                    subitems: [{ text: 'Safari 5.0', value: 4.76 }, { text: 'Safari 4.0', value: 1.42 }, { text: 'Safari Win 5.0', value: 0.23 }, { text: 'Safari 4.1', value: 0.21 }, { text: 'Safari/Maxthon', value: 0.20 }, { text: 'Safari 3.1', value: 0.19 }, { text: 'Safari 4.1', value: 0.14 }]
+                },
+                {
+                    value: 2.14, text: 'Opera',
+                    subitems: [{ text: 'Opera 9.x', value: 0.12 }, { text: 'Opera 10.x', value: 0.37 }, { text: 'Opera 11.x', value: 1.65 }]
+                }
+            ];
+            var data_explorerMulti3 = [{ text: 'Firefox', value: [45.0, 41, 39], color: null },
+                          { text: 'IE', value: [26.8, 30, 32] },
+                          { text: 'Chrome', value: [12.8, 11, 10] },
+                          { text: 'Safari', value: [8.5, 9, 10] },
+                          { text: 'Opera', value: [6.2, 7, 8.5], click: function (data, evt) { alert('特定click：' + data.value); } },
+                          { text: 'Other', value: [0.7, 2, 1.5], mouseover: function (data) { alert("触发mouseover事件！当前值为:" + data.value.toString()); } }];
+
+            //初始化主图对象，本例以饼状图作为主图
+            window.lchart = new LChart.Pie('divCanvas', 'CN');
+            //设置主图的选项和数据
+            lchart.SetSkin('BlackAndWhite');
+            lchart.SetOptions(options_explorer);
+            lchart.SetData(data_explorer);
+
+            //添加5个组合图
+            lchart.AddPlugin('Ring', null, { offX: -230, offY: -70 });
+            lchart.AddPlugin('Polar', null, { offX: -230, offY: 70 });
+            lchart.AddPlugin('Radar', data_onepiece, { offX: 0, offY: 70, labels: { labels: ['IQ', 'EQ', 'Smart', 'Strength', 'Brave', 'Stick', 'Careful'], fontcolors: ["#ffffff", "#ffabff", "rgba(193,71,139,1)", "rgba(188,143,143,1)", "rgba(178,34,34,1)", "rgba(255,140,0,1)", "rgba(139,134,130,1)"] } });
+            lchart.AddPlugin('NestedPie', data_browershare, { offX: 0, offY: -70 });
+            lchart.AddPlugin('MultiRing', data_explorerMulti3, { offX: 230, offY: -70 });
+
+            lchart.Draw();
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../../index.htm';">
+        返回
+    </button>
+</body>
+</html>

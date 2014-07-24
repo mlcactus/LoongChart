@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-HeapHistogram3D</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.heaphistogram3d.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var data = [
+                {
+                    text: 'ABC Info',
+                    value: [45, 52, 54, 74, 90, 84],
+                    color: '#4682B4',
+                    click: function(data) { alert('click！value is ' + data.value); },
+                    mouseover: function(data, evt) { alert('mouseover' + data.value); },
+                    mouseleave: function(data, evt) { alert('mouseleave' + data.value); }
+                },
+                { text: 'SixGods', value: [60, 80, 105, 130, 108, 120], color: '#00CED1' },
+                { text: 'YourSister', value: [20, 40, 35, 67, 130, 49], color: '#00BFFF' }
+            ];
+            var options = {
+                valueType: 'n', animationSteps: 60,
+                title: { content: 'Incomme of three IT companys from March to August in 2013' },
+                valueAxis: { linewidth: 2 },
+                subTitle: { content: 'SixGods shares the most income.' },
+                labelAxis: { labels: ['March', 'April', 'May', 'June', 'July', 'Auguest'], linewidth: 2 },
+                scale: { linewidth: 1, backcolors: ['rgba(175,238,238,0.4)', 'rgba(135,206,250,0.4)'] },
+                cross: { linewidth: 3 },
+                caption: { content: '(million)' },
+                yAxisTitle: { content: 'Six Month in 2013' },
+                footer: { content: 'This is test footer text.', fontcolor: '#f8d8d8' },
+                shadow: { show: true, color: 'rgba(10,10,10,1)', blur: 3, offsetX: 3, offsetY: 3 }
+            };
+
+            window.lchart = new LChart.HeapHistogram3D('divCanvas', 'CN');
+            lchart.SetSkin('BlackAndWhite');
+            lchart.SetOptions(options);
+            lchart.Draw(data);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

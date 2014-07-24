@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-MultiRing</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.multiring.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var data = [
+                { text: 'Firefox', value: [45.0, 41, 39, 40], color: null },
+                { text: 'IE', value: [26.8, 30, 32, 34], fontcolor: '#DC143C' },
+                { text: 'Chrome', value: [12.8, 11, 10, 9] },
+                { text: 'Safari', value: [8.5, 9, 10, 8] },
+                { text: 'Opera', value: [6.2, 7, 8.5, 7.5], click: function(data, evt) { alert('特定click：' + data.value); } },
+                { text: 'Other', value: [0.7, 2, 1.5, 2.5], mouseover: function(data) { alert("触发mouseover事件！当前值为:" + data.value.toString()); } }
+            ];
+            var options = {
+                labels: ['2012-01-05', '2012-07-10', '2013-02-12', '2013-05-25'],
+                click: function(data, evt) { alert(data.value); },
+                title: { content: 'Top 5 Browsers between 2012 and 2013' },
+                subTitle: { content: 'The data is apocryphal.' }
+            };
+
+            window.lchart = new LChart.MultiRing('divCanvas', 'CN');
+            lchart.SetSkin('BlackAndWhite');
+            lchart.SetOptions(options);
+            lchart.Draw(data);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>

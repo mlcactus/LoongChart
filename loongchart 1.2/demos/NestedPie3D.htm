@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>LoongChart入门教程Demo-NestedPie3D</title>
+
+    <script type="text/javascript" src="../excanvas.js"></script>
+
+    <script type="text/javascript" src="../loongchart.core.js"></script>
+
+    <script type="text/javascript" src="../loongchart.nestedpie3d.js"></script>
+
+    <script type="text/javascript" src="../loongchart.skins.js"></script>
+
+    <script type="text/javascript">
+        window.onload = function() {
+            var data = [
+                { value: 55.11, text: 'MSIE',
+                    subitems: [{ text: 'MSIE 6.0', value: 10.85 }, { text: 'MSIE 7.0', value: 7.35 }, { text: 'MSIE 8.0', value: 33.06 }, { text: 'MSIE 9.0', value: 3.85}]
+                },
+                { value: 21.63, text: 'Firefox',
+                    subitems: [{ text: 'Firefox 2.0', value: 0.20 }, { text: 'Firefox 3.0', value: 0.83 }, { text: 'Firefox 3.5', value: 2.05 }, { text: 'Firefox 3.6', value: 13.12 }, { text: 'Firefox 4.0', value: 5.43}]
+                },
+                { value: 11.94, text: 'Chrome',
+                    subitems: [{ text: 'Chrome 5.0', value: 0.12 }, { text: 'Chrome 6.0', value: 0.19 }, { text: 'Chrome 7.0', value: 0.12 }, { text: 'Chrome 8.0', value: 0.36 }, { text: 'Chrome 9.0', value: 0.32 }, { text: 'Chrome 10.0', value: 10.11 }, { text: 'Chrome 11.0', value: 0.50 }, { text: 'Chrome 12.0', value: 0.22}]
+                },
+                { value: 7.15, text: 'Safari',
+                    subitems: [{ text: 'Safari 5.0', value: 4.76 }, { text: 'Safari 4.0', value: 1.42 }, { text: 'Safari Win 5.0', value: 0.23 }, { text: 'Safari 4.1', value: 0.21 }, { text: 'Safari/Maxthon', value: 0.20 }, { text: 'Safari 3.1', value: 0.19 }, { text: 'Safari 4.1', value: 0.14}]
+                },
+                { value: 2.14, text: 'Opera',
+                    subitems: [{ text: 'Opera 9.x', value: 0.12 }, { text: 'Opera 10.x', value: 0.37 }, { text: 'Opera 11.x', value: 1.65}]
+                }
+            ];
+            //该数据用于展示全数组数据源功能
+            //var data= [
+            //    ['开发部', 140, [['软件工程师', 50], ['测试工程师', 35], ['产品专员', 30], ['研发经理', 15], ['美工', 10]]],
+            //    ['销售部', 110, [['一级销售员', 50], ['二级销售员', 30], ['三级销售员', 20], ['销售经理', 10]]],
+            //    ['IT部', 45, [['网络工程师', 20], ['运维', 15], ['其他', 10]]],
+            //    ['人事部', 30],
+            //    ['系统部', 21, [['系统工程师', 10], ['DBA', 8], ['其他', 3]]],
+            //];
+            var options = {
+                margin: 20,
+                subitems: { inheritevents: false },
+                title: { content: 'Browser market share, April, 2011.' },
+                legend: { sidelength: 10, fontsize: 13 },
+                tip: { content: function(data) { return '<div>' + data.text + '<br/>value：' + data.value.toString() + '<br/>percent：' + data.percent.toFixed(3) + '%' + (data.subpercent ? '<br/>subpercent：' + data.subpercent.toFixed(3) + '%' : '') + '</div>'; } }
+            };
+            window.lchart = new LChart.NestedPie3D('divCanvas', 'CN');
+            lchart.SetSkin('RadialGradient_SkyBlue');
+            lchart.SetOptions(options);
+            lchart.Draw(data);
+        };
+    </script>
+
+</head>
+<body style="background-color: #F0F0F0;">
+    <div id="divCanvas" style="width: 800px; height: 400px;">
+    </div>
+    <br />
+    <button onclick="javascript:window.location.href='../index.htm';">
+        返回
+    </button>
+</body>
+</html>
