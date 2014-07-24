@@ -6,7 +6,7 @@ you will not encounter support problems during use theoretically.
 
 Just see my site for more infomation.
 [dcharts.net][dcharts]
-[dcharts]: http://www.dcharts.net
+[dcharts]: http://www.dcharts.net/Home_EN.htm
 
 
 ## Usage Examples
