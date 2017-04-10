@@ -38,4 +38,4 @@ lchart.Draw(data);
 
 ## License
 Copyright (c) 2013, Ma Long, All rights reserved.
-See BSD(3-Clause) [LICENSE][LICENSE] for details.
+See BSD(3-Clause) [LICENSE](https://github.com/mlcactus/LoongChart/blob/master/LICENSE) for details.
