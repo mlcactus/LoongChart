@@ -5,8 +5,7 @@ such as Pie, Bar, Line, Etc. Becasue it is coded by pure javascript, so as long 
 you will not encounter support problems during use theoretically.
 
 Just see my site for more infomation.
-[dcharts.net][dcharts]
-[dcharts]: http://www.dcharts.net/Home_EN.htm
+[loongchart]: http://www.loongchart.net
 
 
 ## Usage Examples
